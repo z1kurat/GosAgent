@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_abseiling.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_archery.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_book_store.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_museum.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_volume_control_telephone.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/activity_information.xml" value="0.1875" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/activity_main.xml" value="0.3132530120481928" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/activity_map.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/card_pattenr.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/card_pattern.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/information_lot_pattern.xml" value="0.1875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

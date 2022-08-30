@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GosAgentNewRelease</string>
+    <string name="nameLot">Лот:</string>
+    <string name="locationLot">Адрес:</string>
+    <string name="priceLot">Цена:</string>
+    <string name="selectLot">Добавить в избронные</string>
+</resources>
