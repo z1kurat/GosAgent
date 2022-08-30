@@ -4,17 +4,70 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable-v24/rounded_corner_solid_view.xml" value="0.192" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_abseiling.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_accounting.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_airport.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_amusement_park.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_aquarium.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_aquarium_from_icon.xml" value="0.192" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_archery.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_art_gallery.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_assistive_listening_system.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_atm.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_audio_description.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_bakery.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_bakery_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_bank.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_bank_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_boat_tour.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_boating.xml" value="0.192" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_book_store.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_bus_station.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_canoe.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_car_dealer.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_car_rental.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_car_repair.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_city_hall.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_city_hall_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_courthouse.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_electrician.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_electrician_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_electronics_store.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_electronics_store_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_finance.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_finance_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_fishing_pier.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_fishing_pier_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_general_contractor.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_general_contractor_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_hardware_store.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_hardware_store_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_launcher_background.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_lawyer.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_lawyer_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_marina.xml" value="0.192" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_museum.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_museum_form_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_political.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_political_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_postal_code_prefix.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_postal_code_prefix_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_train_station.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_train_station_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_university.xml" value="0.192" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_volume_control_telephone.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/ic_volume_control_telephone_from_icon.xml" value="0.192" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/line_block.xml" value="0.1215" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/rounded_corner_view.xml" value="0.1215" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/drawable/square_rounded.xml" value="0.1215" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/activity_information.xml" value="0.1875" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/activity_main.xml" value="0.3132530120481928" />
-        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/activity_map.xml" value="0.1" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/activity_map.xml" value="0.403125" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/card_pattenr.xml" value="0.358695652173913" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/card_pattern.xml" value="0.358695652173913" />
         <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/layout/information_lot_pattern.xml" value="0.1875" />
+        <entry key="..\:/Users/novor/AndroidStudioProjects/GosAgentNewRelease/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.192" />
       </map>
     </option>
   </component>
