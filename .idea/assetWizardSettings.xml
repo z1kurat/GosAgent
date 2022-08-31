@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_settings" />
-                            <entry key="sourceFile" value="C:\Users\novor\AndroidStudioProjects\GosAgentNewRelease\app\src\main\res\drawable-v24\settings-svgrepo-com.svg" />
+                            <entry key="outputName" value="ic_app" />
+                            <entry key="sourceFile" value="C:\Users\novor\AndroidStudioProjects\GosAgentNewRelease\app\src\main\res\drawable-v24\icons8-gaana.svg" />
                           </map>
                         </option>
                       </PersistentState>
