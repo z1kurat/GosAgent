@@ -9,7 +9,9 @@ public class PluginData {
     public int MarkerType = 0;
     public List<MarkerData> Markers = new ArrayList<>();
     public List<LotData> LotData = new ArrayList<>();
+    public List<FavoritesLot> FavoritesLots = new ArrayList<>();
     public String[] CoordinatesLot;
+    public Boolean IsFavorites = false;
 
     public static final String MAPKIT_API_KEY = "51b30e9b-2f6e-4d68-93d9-a8ae19941ef1";
 
@@ -18,7 +20,9 @@ public class PluginData {
     public static final String DB_HOST = "http://cj62918.tmweb.ru/chat.php";
     public static final String TABLE_NAME = "tablestype";
     public static final String ACTION_GET_MARKERS = "?action=select&table=";
-    public static final String ACTION_GET_LOT_INFORMATIONS = "?action=getData&table=";
+    public static final String ACTION_GET_LOT_INFORMATION = "?action=getData&table=";
+    public static final String ACTION_GET_FAVORITES_LOT_INFORMATION = "?action=getFavoritesData&table=";
+    public static final String FAVORITES_LOT = "favoritesLot";
     public static final List<String> AllTegLot = Arrays.asList(
             "organizers", "number", "fossil", "name", "description",
             "location", "work", "square", "object", "transmission_methods",
@@ -32,6 +36,29 @@ public class PluginData {
 
     public String getIDCameraPosition() {
         return LAST_CAMERA_POSITION + MarkerType;
+    }
+
+    public String getIDFavoritesLots() {
+        return FAVORITES_LOT + MarkerType;
+    }
+
+    public void setFavoritesLots(String[] favoritesLots) {
+        for (String lot : favoritesLots)
+            FavoritesLots.add(new FavoritesLot(lot));
+    }
+
+    public Boolean existFavoritesLots(String nameLot) {
+        for (FavoritesLot favoritesLots : FavoritesLots)
+            if (favoritesLots.getName().equals(nameLot))
+                return true;
+
+        return false;
+    }
+
+    public void deleteFavoritesLot(String lotName) {
+        for (int i = 0; i < FavoritesLots.size(); i++)
+            if (FavoritesLots.get(i).getName().equals(lotName))
+                FavoritesLots.remove(i);
     }
 
     private void initializeCards(){
@@ -59,7 +86,9 @@ public class PluginData {
     public void clear() {
         Markers.clear();
         LotData.clear();
+        FavoritesLots.clear();
         CoordinatesLot = null;
+        IsFavorites = false;
     }
 }
 
@@ -73,8 +102,6 @@ class MarkerData {
         this.coordinatesX = coordinatesX;
         this.coordinatesY = coordinatesY;
     }
-
-    public MarkerData() { }
 }
 
 class LotData {
@@ -98,4 +125,16 @@ class LotData {
         this.description.addAll(lotConfigs);
     }
 
+}
+
+class FavoritesLot {
+    private final String name;
+
+    public FavoritesLot(String nameLot) {
+        name = nameLot;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

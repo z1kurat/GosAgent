@@ -3,5 +3,6 @@
     <string name="nameLot">Лот:</string>
     <string name="locationLot">Адрес:</string>
     <string name="priceLot">Цена:</string>
-    <string name="selectLot">Добавить в избронные</string>
+    <string name="favorites">Избранные</string>
+    <string name="textForButtonLink">Подробнее</string>
 </resources>

@@ -28,6 +28,7 @@ public class ReadData {
 
     public Markers Markers = new Markers();
     public LotInformation Lot = new LotInformation();
+    public FavoritesLotInformation FavoritesLotInformation = new FavoritesLotInformation();
 
     public interface OnMarkersReadListener {
         void onMarkersRead(Boolean isDone);
@@ -67,6 +68,21 @@ public class ReadData {
         }
     }
 
+    class FavoritesLotInformation {
+        ExecutorService executor;
+        Handler handler;
+
+        public void execute() {
+            executor = Executors.newSingleThreadExecutor();
+            handler = new Handler(Looper.getMainLooper());
+
+            executor.execute(() -> {
+                Boolean resultWord = GetFavoritesLotData();
+                handler.post(() ->  lListener.onLotsRead(resultWord));
+            });
+        }
+    }
+
     public void setOnMarkersReadListener(OnMarkersReadListener listener) { mListener = listener; }
 
     public void setOnLotsReadListener(OnLotReadListener listener) {
@@ -82,8 +98,21 @@ public class ReadData {
         return true;
     }
 
+    public Boolean GetFavoritesLotData() {
+        String typeConnection = PluginData.DB_HOST + PluginData.ACTION_GET_FAVORITES_LOT_INFORMATION + PluginModel.getTableName() +
+                                    "&name=";
+        for (FavoritesLot favoritesLot : PluginModel.Data.FavoritesLots) {
+            if (!CanGetData(typeConnection + favoritesLot.getName()))
+                return false;
+
+            ParseLotInformation();
+        }
+
+        return true;
+    }
+
     public Boolean GetLotData(String x, String y) {
-        String typeConnection = PluginData.DB_HOST + PluginData.ACTION_GET_LOT_INFORMATIONS + PluginModel.getTableName() +
+        String typeConnection = PluginData.DB_HOST + PluginData.ACTION_GET_LOT_INFORMATION + PluginModel.getTableName() +
                                 "&X=" + x + "&Y=" + y;
         if (!CanGetData(typeConnection))
             return false;

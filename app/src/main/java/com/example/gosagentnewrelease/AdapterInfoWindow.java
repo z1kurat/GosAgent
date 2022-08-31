@@ -1,7 +1,5 @@
 package com.example.gosagentnewrelease;
 
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class AdapterInfoWindow extends RecyclerView.Adapter<AdapterInfoWindow.LotViewHolder>{
-    static class LotViewHolder extends RecyclerView.ViewHolder {
+    static class LotViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private final static String ADD_FAVORITES_LOT = "Добавить в избронные";
+        private final static String DELETE_FAVORITES_LOT = "Удалить из избронных";
+
         private final Button searchButton;
         private final ImageView imageView;
         private final TextView textNumber;
         private final TextView textLot;
         private final TextView textDescription;
-        private final TextView link;
+        private final Button link;
+        private String linkText;
         private final TextView textAddresses;
         private final TextView textPrice;
 
@@ -35,6 +37,9 @@ public class AdapterInfoWindow extends RecyclerView.Adapter<AdapterInfoWindow.Lo
             textDescription = itemView.findViewById(R.id.textDescription);
             textAddresses = itemView.findViewById(R.id.textAdress);
             textPrice = itemView.findViewById(R.id.textPrice);
+
+            searchButton.setOnClickListener(this);
+            link.setOnClickListener(this);
         }
 
         void setOnPageInformation(InformationPages information) {
@@ -44,15 +49,36 @@ public class AdapterInfoWindow extends RecyclerView.Adapter<AdapterInfoWindow.Lo
             textDescription.setText(information.getDescription());
             textAddresses.setText(information.getAddresses());
             textPrice.setText(information.getPrice());
+            linkText = information.getLink();
+            setTextFavoritesLot(PluginModel.Data.existFavoritesLots(linkText));
+        }
 
-            String linkText = "<a href=\"" + information.getLink() + "\">Подробнее</a>";
-            link.setText(Html.fromHtml(linkText, null, null));
-            link.setPaintFlags(0);
-            link.setMovementMethod(LinkMovementMethod.getInstance());
+        void setTextFavoritesLot(Boolean isDelete) {
+            if (isDelete)
+                searchButton.setText(DELETE_FAVORITES_LOT);
+            else
+                searchButton.setText(ADD_FAVORITES_LOT);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.search_button)
+                setTextFavoritesLot(!PluginModel.Data.existFavoritesLots(linkText));
+
+            fListener.onButtonClick(v, linkText);
         }
     }
 
+    public interface OnLotClickListener {
+        void onButtonClick(View view, String lotName);
+    }
+
     private final List<InformationPages> informationOnPageList;
+    public static OnLotClickListener fListener;
+
+    public void setLotClickListener(OnLotClickListener listener) {
+        fListener = listener;
+    }
 
     public AdapterInfoWindow(List<InformationPages> informationOnPageList) {
         this.informationOnPageList = informationOnPageList;
@@ -62,6 +88,7 @@ public class AdapterInfoWindow extends RecyclerView.Adapter<AdapterInfoWindow.Lo
         informationOnPageList.clear();
     }
 
+    @NonNull
     @Override
     public LotViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new LotViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.information_lot_pattern,

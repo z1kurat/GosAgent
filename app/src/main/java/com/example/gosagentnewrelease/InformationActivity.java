@@ -3,7 +3,12 @@ package com.example.gosagentnewrelease;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,10 +17,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InformationActivity extends AppCompatActivity implements ReadData.OnLotReadListener{
+public class InformationActivity extends AppCompatActivity implements ReadData.OnLotReadListener, AdapterInfoWindow.OnLotClickListener{
     private AdapterInfoWindow adapterInfoWindow;
     private LinearLayout linearLayout;
     private ViewPager2 viewPager2;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +31,34 @@ public class InformationActivity extends AppCompatActivity implements ReadData.O
         linearLayout = findViewById(R.id.layoutOnAction);
         viewPager2 = findViewById(R.id.viewOnAction);
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(InformationActivity.this);
+
         PluginModel.Reading.setOnLotsReadListener(this);
-        PluginModel.Reading.Lot.execute(PluginModel.Data.CoordinatesLot);
+        if (PluginModel.Data.IsFavorites)
+            PluginModel.Reading.FavoritesLotInformation.execute();
+        else
+            PluginModel.Reading.Lot.execute(PluginModel.Data.CoordinatesLot);
     }
 
     @Override
     public void finish() {
+        saveData();
         PluginModel.clear();
         adapterInfoWindow.clear();
         linearLayout = null;
         viewPager2 = null;
         super.finish();
+    }
+
+    private void saveData() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        StringBuilder result = new StringBuilder();
+
+        for (FavoritesLot favoritesLot : PluginModel.Data.FavoritesLots)
+            result.append(favoritesLot.getName()).append(",");
+
+        editor.putString(PluginModel.Data.getIDFavoritesLots(), result.toString());
+        editor.apply();
     }
 
     private void setupAdapterInfoWindow() {
@@ -91,7 +114,30 @@ public class InformationActivity extends AppCompatActivity implements ReadData.O
         }
 
         setupAdapterInfoWindow();
+        adapterInfoWindow.setLotClickListener(this);
+
         viewPager2.setAdapter(adapterInfoWindow);
         setupIndicator();
     }
+
+    @Override
+    public void onButtonClick(View view, String lotLink) {
+        if (view.getId() == R.id.search_button)
+            updateFavoritesLots(lotLink);
+
+        if (view.getId() == R.id.textLink) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(lotLink));
+            startActivity(browserIntent);
+        }
+
+    }
+
+    private void updateFavoritesLots(String lotLink) {
+        if (PluginModel.Data.existFavoritesLots(lotLink)) {
+            PluginModel.Data.deleteFavoritesLot(lotLink);
+        } else {
+            PluginModel.Data.FavoritesLots.add(new FavoritesLot(lotLink));
+        }
+    }
+
 }

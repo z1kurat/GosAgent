@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.PopupMenu;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,15 +22,12 @@ import com.yandex.mapkit.location.Location;
 import com.yandex.mapkit.location.LocationListener;
 import com.yandex.mapkit.location.LocationManager;
 import com.yandex.mapkit.location.LocationStatus;
-import com.yandex.mapkit.map.CameraListener;
 import com.yandex.mapkit.map.CameraPosition;
-import com.yandex.mapkit.map.CameraUpdateReason;
 import com.yandex.mapkit.map.Cluster;
 import com.yandex.mapkit.map.ClusterListener;
 import com.yandex.mapkit.map.ClusterTapListener;
 import com.yandex.mapkit.map.ClusterizedPlacemarkCollection;
 import com.yandex.mapkit.map.IconStyle;
-import com.yandex.mapkit.map.Map;
 import com.yandex.mapkit.map.MapObject;
 import com.yandex.mapkit.map.MapObjectTapListener;
 import com.yandex.mapkit.map.PlacemarkMapObject;
@@ -46,14 +44,16 @@ import com.yandex.runtime.image.ImageProvider;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class MapActivity extends Activity implements ReadData.OnMarkersReadListener, ClusterListener, ClusterTapListener, MapObjectTapListener, com.yandex.mapkit.search.Session.SearchListener, CameraListener  {
+public class MapActivity extends Activity implements ReadData.OnMarkersReadListener, ClusterListener, ClusterTapListener, MapObjectTapListener, Session.SearchListener, ImageButton.OnClickListener {
     public static int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
     private Point cameraLocation = new Point(54.848064,83.092304);
     private EditText searchEdit;
+    private ImageButton settings;
     private SearchManager searchManager;
-    private com.yandex.mapkit.search.Session searchSession;
+    private Session searchSession;
     private MapView mapView;
 
     private SharedPreferences sharedPreferences;
@@ -72,16 +72,17 @@ public class MapActivity extends Activity implements ReadData.OnMarkersReadListe
         super.onCreate(savedInstanceState);
         searchManager = SearchFactory.getInstance().createSearchManager(SearchManagerType.COMBINED);
         mapView = findViewById(R.id.mapView);
-        mapView.getMap().addCameraListener(this);
+        settings = findViewById(R.id.settings);
+        settings.setOnClickListener(this);
         searchEdit = findViewById(R.id.search_edit);
         searchEdit.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH)
-                submitQuery(searchEdit.getText().toString());
-
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                String searchRequest = searchEdit.getText().toString();
+                if (!searchRequest.equals(""))
+                    submitQuery(searchRequest);
+            }
             return false;
         });
-
-        submitQuery(searchEdit.getText().toString());
 
         setStartCameraPosition();
         moveCamera(Animation.Type.SMOOTH, 5);
@@ -164,11 +165,22 @@ public class MapActivity extends Activity implements ReadData.OnMarkersReadListe
         editor.apply();
     }
 
+    private void getFavoritesLots() {
+        String nameKey = PluginModel.Data.getIDFavoritesLots();
+
+        if (!sharedPreferences.contains(nameKey))
+            return;
+
+        String favoritesLots = sharedPreferences.getString(nameKey, "");
+        PluginModel.Data.setFavoritesLots(favoritesLots.split(","));
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
         MapKitFactory.getInstance().onStart();
         mapView.onStart();
+        getFavoritesLots();
     }
 
     @Override
@@ -235,12 +247,12 @@ public class MapActivity extends Activity implements ReadData.OnMarkersReadListe
 
     @Override
     public void onSearchResponse(Response response) {
-        Point x = response.getCollection().getChildren().get(0).getObj().getGeometry().get(0).getPoint();
-        if (x == null)
+        Point findPosition = Objects.requireNonNull(response.getCollection().getChildren().get(0).getObj()).getGeometry().get(0).getPoint();
+        if (findPosition == null)
             return;
-        cameraLocation =x;
 
-        moveCamera(Animation.Type.SMOOTH, 5);
+        cameraLocation = findPosition;
+        moveCamera(Animation.Type.SMOOTH, 3);
     }
 
     @Override
@@ -249,13 +261,11 @@ public class MapActivity extends Activity implements ReadData.OnMarkersReadListe
     }
 
     @Override
-    public void onCameraPositionChanged(Map map, CameraPosition cameraPosition,
-            CameraUpdateReason cameraUpdateReason,
-            boolean finished) {
-        if (finished) {
-            //submitQuery(searchEdit.getText().toString());
-        }
-    }
+    public void onClick(View v) {
+        PluginModel.Data.IsFavorites = true;
 
+        Intent intent = new Intent(this, InformationActivity.class);
+        startActivity(intent);
+    }
 }
 

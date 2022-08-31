@@ -25,7 +25,7 @@ public class PluginModel {
     }
 
     private static Drawable xmlToDrawable(Context context) {
-        int vectorResId = R.drawable.ic_museum;
+        int vectorResId = getMarkerResource();
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
         vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
         Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
@@ -54,6 +54,31 @@ public class PluginModel {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    public static int getMarkerResource() {
+        int icon;
+        switch (Data.MarkerType) {
+            case 1: icon = R.drawable.ic_museum; break;
+            case 2: icon = R.drawable.ic_city_hall; break;
+            case 3: icon = R.drawable.ic_hardware_store; break;
+            case 4: icon = R.drawable.ic_bakery; break;
+            case 5: icon = R.drawable.ic_finance; break;
+            case 6: icon = R.drawable.ic_train_station; break;
+            case 7: icon = R.drawable.ic_postal_code_prefix; break;
+            case 8: icon = R.drawable.ic_political; break;
+            case 9: icon = R.drawable.ic_electronics_store; break;
+            case 10: icon = R.drawable.ic_aquarium; break;
+            case 11: icon = R.drawable.ic_fishing_pier; break;
+            case 12: icon = R.drawable.ic_bank; break;
+            case 13: icon = R.drawable.ic_lawyer; break;
+            case 14: icon = R.drawable.ic_general_contractor; break;
+            case 15: icon = R.drawable.ic_volume_control_telephone; break;
+            case 16: icon = R.drawable.ic_electrician; break;
+            case 17: icon = R.drawable.ic_electronics_store; break;
+            default: icon = R.drawable.ic_postal_code_prefix; break;
+        }
+        return icon;
     }
 
     public static void clear() {

@@ -194,18 +194,19 @@
             android:layout_margin="10dp"
             android:paddingVertical="2dp"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/square_rounded">
+            android:layout_marginEnd="15dp">
 
-            <TextView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/textLink"
-                style="?android:listSeparatorTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/material_on_background_disabled"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:text="@string/textForButtonLink"
+                android:textSize="20sp"
                 android:gravity="center"
-                app:cornerRadius="5sp"/>
+                android:background="@drawable/square_rounded"
+                app:cornerRadius="5dp"/>
 
         </RelativeLayout>
 
@@ -221,7 +222,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginHorizontal="20sp"
                 android:layout_marginVertical="10sp"
-                android:text="@string/selectLot"
                 app:cornerRadius="10dp" />
 
         </RelativeLayout>
