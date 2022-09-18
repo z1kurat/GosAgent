@@ -174,7 +174,8 @@ public class ReadData {
             Log.d("GosAgent", "error get information " + e.getMessage());
             return false;
         } finally {
-            Connection.disconnect();
+            if (Connection != null)
+                Connection.disconnect();
             Log.d("GosAgent", "connection closed");
         }
         return true;

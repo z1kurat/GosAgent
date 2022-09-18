@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.yandex.android:maps.mobile:4.0.0-full@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ec1e3d4bcc2a26643b2f3f9f9729fb4f/transformed/maps.mobile-4.0.0-full/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ec1e3d4bcc2a26643b2f3f9f9729fb4f/transformed/maps.mobile-4.0.0-full/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ec1e3d4bcc2a26643b2f3f9f9729fb4f/transformed/maps.mobile-4.0.0-full/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

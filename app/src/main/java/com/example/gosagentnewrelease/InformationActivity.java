@@ -34,20 +34,22 @@ public class InformationActivity extends AppCompatActivity implements ReadData.O
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(InformationActivity.this);
 
         PluginModel.Reading.setOnLotsReadListener(this);
-        if (PluginModel.Data.IsFavorites)
-            PluginModel.Reading.FavoritesLotInformation.execute();
-        else
-            PluginModel.Reading.Lot.execute(PluginModel.Data.CoordinatesLot);
+        readData();
     }
 
     @Override
     public void finish() {
         saveData();
-        PluginModel.clear();
-        adapterInfoWindow.clear();
-        linearLayout = null;
-        viewPager2 = null;
+        PluginModel.Data.LotData.clear();
         super.finish();
+    }
+
+    private void readData() {
+        if (PluginModel.Data.IsFavorites) {
+            PluginModel.Reading.FavoritesLotInformation.execute();
+        } else if (PluginModel.Data.CoordinatesLot != null) {
+            PluginModel.Reading.Lot.execute(PluginModel.Data.CoordinatesLot);
+        }
     }
 
     private void saveData() {
@@ -122,14 +124,13 @@ public class InformationActivity extends AppCompatActivity implements ReadData.O
 
     @Override
     public void onButtonClick(View view, String lotLink) {
-        if (view.getId() == R.id.search_button)
-            updateFavoritesLots(lotLink);
-
-        if (view.getId() == R.id.textLink) {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(lotLink));
-            startActivity(browserIntent);
+        switch (view.getId()) {
+            case R.id.search_button: updateFavoritesLots(lotLink); break;
+            case R.id.textLink:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(lotLink));
+                startActivity(browserIntent);
+                break;
         }
-
     }
 
     private void updateFavoritesLots(String lotLink) {

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.yandex.mapkit.Animation;
+import com.yandex.mapkit.GeoObject;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.location.Location;
@@ -64,7 +66,7 @@ public class MapActivity extends Activity implements ReadData.OnMarkersReadListe
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MapActivity.this);
 
-        SetApiKey.Activate();
+        PluginModel.SetApiKey.Activate();
         MapKitFactory.initialize(this);
         SearchFactory.initialize(this);
 
@@ -144,6 +146,14 @@ public class MapActivity extends Activity implements ReadData.OnMarkersReadListe
     protected void onStop() {
         mapView.onStop();
         MapKitFactory.getInstance().onStop();
+        try {
+            PluginModel.Reading.Lot.executor.shutdown();
+            PluginModel.Reading.Markers.executor.shutdown();
+            PluginModel.Reading.FavoritesLotInformation.executor.shutdown();
+        } catch (Exception e) {
+            Log.d("GosAgent", "bam!");
+        }
+
         super.onStop();
     }
 
@@ -188,7 +198,7 @@ public class MapActivity extends Activity implements ReadData.OnMarkersReadListe
         if (!isDone) {
             Toast.makeText(
                     this,
-                    "Не удалось загрузить информацию по указанным лотам.",
+                    "Не удалось загрузить информацию по указанным лотам...",
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -247,12 +257,16 @@ public class MapActivity extends Activity implements ReadData.OnMarkersReadListe
 
     @Override
     public void onSearchResponse(Response response) {
-        Point findPosition = Objects.requireNonNull(response.getCollection().getChildren().get(0).getObj()).getGeometry().get(0).getPoint();
-        if (findPosition == null)
-            return;
+        try {
+            GeoObject findPosition = Objects.requireNonNull(response.getCollection().getChildren().get(0).getObj());
+            if (findPosition.getGeometry().isEmpty())
+                return;
 
-        cameraLocation = findPosition;
-        moveCamera(Animation.Type.SMOOTH, 3);
+            cameraLocation = findPosition.getGeometry().get(0).getPoint();
+            moveCamera(Animation.Type.SMOOTH, 3);
+        } catch (NullPointerException exception) {
+            Log.d("GosAgent", "onSearchResponse " + exception);
+        }
     }
 
     @Override

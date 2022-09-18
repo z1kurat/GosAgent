@@ -17,6 +17,7 @@ public class PluginData {
 
     public static final String LAST_CAMERA_POSITION = "lastCameraPosition";
 
+    public static final Integer COUNT_TABLE = 19;
     public static final String DB_HOST = "http://cj62918.tmweb.ru/chat.php";
     public static final String TABLE_NAME = "tablestype";
     public static final String ACTION_GET_MARKERS = "?action=select&table=";
@@ -81,6 +82,8 @@ public class PluginData {
         Cards.add(new Card(R.drawable.ic_volume_control_telephone_from_icon, "Размещение рекламных конструкций", 15));
         Cards.add(new Card(R.drawable.ic_electrician_from_icon, "Продажа объектов электроэнергетики", 16));
         Cards.add(new Card(R.drawable.ic_electronics_store_from_icon, "Лицензии на оказание услуг связи", 17));
+        Cards.add(new Card(R.drawable.ic_car_repair, "Металические конструкции", 18));
+        Cards.add(new Card(R.drawable.ic_atm, "Без объявления цены", 19));
     }
 
     public void clear() {

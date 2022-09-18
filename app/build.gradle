@@ -29,7 +29,7 @@ android {
 
 dependencies {
     //YandexMap
-    implementation 'com.yandex.android:maps.mobile:4.2.0-full'
+    implementation 'com.yandex.android:maps.mobile:4.0.0-full'
 
     //CardView
     implementation 'androidx.cardview:cardview:1.0.0'

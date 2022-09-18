@@ -8,10 +8,14 @@ import android.graphics.drawable.Drawable;
 
 import androidx.core.content.ContextCompat;
 
+import com.yandex.mapkit.MapKitFactory;
+
 public class PluginModel {
     public static PluginData Data = new PluginData();
 
     public static ReadData Reading = new ReadData();
+
+    public static SetApiKey ApiKey = new SetApiKey();
 
     public static String getTableName() { return PluginData.TABLE_NAME + Data.MarkerType; }
 
@@ -85,4 +89,20 @@ public class PluginModel {
         Data.clear();
         Reading.clear();
     }
+
+     static class SetApiKey {
+        private static boolean isActivate = false;
+
+        public static void Activate() {
+            if (isActivate)
+                return;
+
+            MapKitFactory.setApiKey(PluginData.MAPKIT_API_KEY);
+            isActivate = true;
+        }
+
+    }
+
 }
+
+
