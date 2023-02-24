@@ -1,59 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.MapActivity">
 
-    <com.yandex.mapkit.mapview.MapView
-        android:id="@+id/mapView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/search_bar"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/rounded_corner_solid_view"
-        android:orientation="horizontal">
-
-        <EditText
+        <com.yandex.mapkit.mapview.MapView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/search_edit"
-            android:imeOptions="actionSearch"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@drawable/round_btn"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/sheet"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <ImageView
             android:layout_marginTop="10dp"
-            android:background="@null"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textSize="20sp"
-            android:inputType="text"
-            android:textColor="@android:color/background_dark"
-            android:maxLines="1"
-            android:autofillHints="Поиск" />
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:src="@drawable/ic_baseline_remove_24"
+            android:scaleType="center"
+            android:id="@+id/remove"
+            android:layout_gravity="center|top"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="right">
+            android:id="@+id/search_bar"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_anchor="@id/remove"
+            app:layout_anchorGravity="bottom"
+            android:background="@drawable/square_rounded_white"
+            android:orientation="vertical">
 
-            <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_settings"
-                android:contentDescription="@string/favorites"
-                android:id="@+id/settings"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/search_edit"
+                android:imeOptions="actionSearch"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textSize="20sp"
+                android:inputType="text"
+                android:textColor="@android:color/background_dark"
+                android:maxLines="1"
+                android:autofillHints="Поиск"
+                tools:ignore="LabelFor" />
 
         </RelativeLayout>
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_anchor="@id/remove"
+            app:layout_anchorGravity="bottom">
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_marginRight="10dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:id="@+id/price"
+                android:text="Цена" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_anchor="@id/remove"
+            app:layout_anchorGravity="bottom"
+            android:background="@drawable/square_rounded_white"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/min_price"
+                android:layout_width="140dp"
+                android:layout_height="35dp"
+                android:hint="От"
+                android:maxLines="1"
+                android:lines="1"
+                android:singleLine="true"
+                android:inputType="number"
+                android:background="@null"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:elegantTextHeight="true"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_marginStart="160dp"
+                android:text="—"
+                android:enabled="false"
+                android:maxLines="1"
+                android:lines="1"
+                android:singleLine="true"
+                android:elegantTextHeight="true"
+                android:background="@null"
+                android:textSize="20sp"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/max_price"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:background="@null"
+                android:layout_marginEnd="10dp"
+                android:maxLines="1"
+                android:lines="1"
+                android:singleLine="true"
+                android:layout_marginStart="185dp"
+                android:elegantTextHeight="true"
+                android:hint="До"
+                android:textSize="20sp"
+                android:inputType="number"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_anchor="@id/remove"
+            app:layout_anchorGravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:text="Регоины"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/square_rounded_white"
+                android:layout_marginTop="40dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:id="@+id/region"
+                    android:hint="Все"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:elegantTextHeight="true"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="20sp"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_anchor="@id/remove"
+            app:layout_anchorGravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:text="Типы торгов"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/square_rounded_white"
+                android:layout_marginTop="40dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Любой"
+                    android:singleLine="true"
+                    android:id="@+id/type"
+                    android:elegantTextHeight="true"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textColor="@color/common_google_signin_btn_text_light_focused"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:focusable="true"
+        android:clickable="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

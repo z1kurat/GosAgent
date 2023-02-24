@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
+
+    <include layout="@layout/tool_bar"
+    android:id="@+id/tool_bar"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:id="@+id/rv" />
+        android:layout_below="@+id/tool_bar"
+        android:layout_alignEnd="@+id/tool_bar"
+        android:layout_gravity="center_horizontal"
+        android:scrollbars="vertical" />
 
-</LinearLayout>
+</RelativeLayout>
